@@ -5,14 +5,9 @@ import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +20,9 @@ public class Game {
     private int gameplayCompletionist;
     private int gameplayMain;
     private int gameplayMainExtra;
+
     @Id
+
     private String id;
     private String imageUrl;
     private String name;
@@ -33,6 +30,13 @@ public class Game {
     private boolean completed;
     private int timeSpent;
     private int remainingTime;
+
+
+    @ElementCollection
+    @Singular
+    @Column (name = "game")
+    @ManyToMany
+    private List<User> users;
 
 
 }

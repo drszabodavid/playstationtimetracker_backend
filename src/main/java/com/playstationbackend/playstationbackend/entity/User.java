@@ -1,30 +1,23 @@
 package com.playstationbackend.playstationbackend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 @Entity
-@Table(name = "PERSON")
+@Table(name = "USER")
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "Id", nullable = false)
+    @Column(name = "Id_user", nullable = false)
     private Long id;
 
     @Column(name = "Name", length = 64, nullable = false)
@@ -35,5 +28,10 @@ public class User {
 
     @Column(name = "Email", length = 64, nullable = false)
     private String email;
+
+    @ManyToMany
+    @JoinColumn(name = "game")
+    private List<Game> games;
+
 
 }
