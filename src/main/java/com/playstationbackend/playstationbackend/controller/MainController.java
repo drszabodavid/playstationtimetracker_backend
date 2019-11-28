@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class MainController {
 
@@ -20,26 +22,18 @@ public class MainController {
     private GameRepository gameRepository;
 
     @ResponseBody
-    @RequestMapping("/")
-    public String index() {
-        Iterable<User> all = personRepository.findAll();
+    @RequestMapping(value = "/games", produces = "application/json")
+    public List<Game> getAllGames() {
+        List<Game> allGames = gameRepository.findAll();
 
-        StringBuilder sb = new StringBuilder();
-
-        all.forEach(p -> sb.append(p.getName() + "<br>"));
-
-        return sb.toString();
+        return allGames;
     }
 
     @ResponseBody
-    @RequestMapping("/games")
-    public String games() {
-        Iterable<Game> games = gameRepository.findAll();
+    @RequestMapping(value = "/users", produces = "application/json")
+    public List<User> getAllUsers() {
+        List<User> allUser = personRepository.findAll();
 
-        StringBuilder sb = new StringBuilder();
-
-        games.forEach(g -> sb.append(g.toString() + "<br>"));
-
-        return sb.toString();
+        return allUser;
     }
 }

@@ -32,11 +32,7 @@ public class Game {
     private int remainingTime;
 
 
-    @ElementCollection
-    @Singular
-    @Column (name = "game")
-    @ManyToMany
-    private List<User> users;
+
 
 
 }
