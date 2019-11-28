@@ -3,9 +3,7 @@ package com.playstationbackend.playstationbackend.entity;
 
 import lombok.*;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -22,14 +20,14 @@ public class Game {
     private int gameplayMainExtra;
 
     @Id
-
     private String id;
     private String imageUrl;
     private String name;
-    private boolean liked;
-    private boolean completed;
-    private int timeSpent;
-    private int remainingTime;
+
+    @ElementCollection
+    @Singular
+    @OneToMany
+    private List<SelectedGame> gameUpdates;
 
 
 
