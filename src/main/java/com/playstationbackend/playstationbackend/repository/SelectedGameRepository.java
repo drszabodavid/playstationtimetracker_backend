@@ -1,6 +1,7 @@
 package com.playstationbackend.playstationbackend.repository;
 
 import com.playstationbackend.playstationbackend.entity.SelectedGame;
+import com.playstationbackend.playstationbackend.entity.User;
 import com.playstationbackend.playstationbackend.model.ComplexGame;
 import lombok.Singular;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +15,8 @@ import java.util.Optional;
 
 @Repository
 public interface SelectedGameRepository extends JpaRepository<SelectedGame, Long> {
+
+    List<SelectedGame> getAllByUser(Optional<User> user);
 
 
 

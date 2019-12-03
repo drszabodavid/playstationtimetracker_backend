@@ -19,14 +19,15 @@ public class SelectedGame {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = User.class)
     private User user;
 
     private String gameId;
 
     private boolean liked;
     private boolean completed;
-    private int timeSpent;
-    private int remainingTime;
+    private double timeSpent;
+    private double remainingTime;
+
 
 }

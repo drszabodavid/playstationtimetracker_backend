@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USER")
 public class User {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -23,12 +24,6 @@ public class User {
 
     private String email;
 
-//    @ManyToMany
-//    @JoinColumn(name = "game")
-//    private List<Game> games;
-
-    @OneToMany
-    private List<SelectedGame> selectedGames;
 
 
 }
