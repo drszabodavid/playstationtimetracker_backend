@@ -10,6 +10,7 @@ import com.playstationbackend.playstationbackend.repository.UserRepository;
 import com.playstationbackend.playstationbackend.service.DatabaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,10 +39,13 @@ public class GameController {
     @ResponseBody
     @PostMapping(value = "/games/save")
     public void saveEventToDatabase(@RequestBody Map<String, String> game) {
-        System.out.println(game);
         databaseService.saveNewGameToDatabase(game);
+    }
 
-
+    @ResponseBody
+    @DeleteMapping(value = "/games/{selectedGameId}")
+    public void deletePost(@PathVariable Long selectedGameId) {
+        selectedGameRepository.deleteById(selectedGameId);
     }
 
 
