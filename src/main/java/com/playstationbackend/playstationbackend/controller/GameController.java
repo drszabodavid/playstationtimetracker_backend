@@ -33,11 +33,6 @@ public class GameController {
     @ResponseBody
     @PostMapping(value = "/games/update")
     public void updatePlayTimeByGame(@RequestBody Map<String, String> gameToUpdate) {
-        log.info("----------------------");
-        log.info("----------------------");
-        log.info(gameToUpdate.toString());
-        log.info("----------------------");
-        log.info("----------------------");
         gameDatabaseService.updateTimeForGame(gameToUpdate);
     }
 
@@ -54,7 +49,7 @@ public class GameController {
     }
 
     @ResponseBody
-    @DeleteMapping(value = "/games/{selectedGameId}")
+    @PostMapping(value = "/games/{selectedGameId}")
     public void deletePost(@PathVariable Long selectedGameId) {
         selectedGameRepository.deleteById(selectedGameId);
     }
