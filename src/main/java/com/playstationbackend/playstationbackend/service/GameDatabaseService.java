@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class DatabaseService {
+public class GameDatabaseService {
 
     @Autowired
     UserRepository userRepository;

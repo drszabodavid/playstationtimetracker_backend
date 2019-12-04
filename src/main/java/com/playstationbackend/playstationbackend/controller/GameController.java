@@ -1,16 +1,10 @@
 package com.playstationbackend.playstationbackend.controller;
 
-import com.playstationbackend.playstationbackend.entity.Game;
-import com.playstationbackend.playstationbackend.entity.SelectedGame;
-import com.playstationbackend.playstationbackend.entity.User;
 import com.playstationbackend.playstationbackend.model.ComplexGame;
-import com.playstationbackend.playstationbackend.repository.GameRepository;
 import com.playstationbackend.playstationbackend.repository.SelectedGameRepository;
-import com.playstationbackend.playstationbackend.repository.UserRepository;
-import com.playstationbackend.playstationbackend.service.DatabaseService;
+import com.playstationbackend.playstationbackend.service.GameDatabaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +22,12 @@ public class GameController {
     SelectedGameRepository selectedGameRepository;
 
     @Autowired
-    DatabaseService databaseService;
+    GameDatabaseService gameDatabaseService;
 
     @ResponseBody
     @GetMapping(value = "/{userId}/games", produces = "application/json")
     public List<ComplexGame> getEventByCity(@PathVariable("userId") Long userId) {
-        return databaseService.getAllGamesForaUser(userId);
+        return gameDatabaseService.getAllGamesForaUser(userId);
     }
 
     @ResponseBody
@@ -44,19 +38,19 @@ public class GameController {
         log.info(gameToUpdate.toString());
         log.info("----------------------");
         log.info("----------------------");
-        databaseService.updateTimeForGame(gameToUpdate);
+        gameDatabaseService.updateTimeForGame(gameToUpdate);
     }
 
     @ResponseBody
     @PostMapping(value = "/games/complete/{selectedGameId}")
     public void updateCompletionByGame(@PathVariable Long selectedGameId) {
-        databaseService.updateCompletedForGame(selectedGameId);
+        gameDatabaseService.updateCompletedForGame(selectedGameId);
     }
 
     @ResponseBody
     @PostMapping(value = "/games/star/{selectedGameId}")
     public void updateStarredByGame(@PathVariable Long selectedGameId) {
-        databaseService.updateStarredForGame(selectedGameId);
+        gameDatabaseService.updateStarredForGame(selectedGameId);
     }
 
     @ResponseBody
@@ -68,7 +62,7 @@ public class GameController {
     @ResponseBody
     @PostMapping(value = "/games/save")
     public void saveEventToDatabase(@RequestBody Map<String, String> game) {
-        databaseService.saveNewGameToDatabase(game);
+        gameDatabaseService.saveNewGameToDatabase(game);
     }
 
 

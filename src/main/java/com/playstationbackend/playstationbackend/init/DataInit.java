@@ -64,14 +64,18 @@ public class DataInit implements ApplicationRunner {
             User p1 = new User();
             p1.setName("John");
             p1.setEmail("john@gmail.com");
-            p1.setPassword(1234);
+            p1.setPassword("1234");
+            p1.builder()
+                    .role("ROLE_USER").build();
             userRepository.save(p1);
 
 
             User p2 = new User();
             p2.setName("Smith");
             p2.setEmail("smith@gmail.com");
-            p2.setPassword(1234);
+            p2.setPassword("1234");
+            p2.builder()
+                    .role("ROLE_USER").build();
             userRepository.save(p2);
 
 

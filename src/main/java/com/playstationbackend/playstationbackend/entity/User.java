@@ -20,9 +20,13 @@ public class User {
 
     private String name;
 
-    private int password;
+    private String password;
 
     private String email;
+
+    @ElementCollection
+    @Singular
+    private List<String> roles;
 
 
 
