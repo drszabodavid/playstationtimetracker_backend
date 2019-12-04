@@ -37,15 +37,38 @@ public class GameController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/games/save")
-    public void saveEventToDatabase(@RequestBody Map<String, String> game) {
-        databaseService.saveNewGameToDatabase(game);
+    @PostMapping(value = "/games/update")
+    public void updatePlayTimeByGame(@RequestBody Map<String, String> gameToUpdate) {
+        log.info("----------------------");
+        log.info("----------------------");
+        log.info(gameToUpdate.toString());
+        log.info("----------------------");
+        log.info("----------------------");
+        databaseService.updateTimeForGame(gameToUpdate);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/games/complete/{selectedGameId}")
+    public void updateCompletionByGame(@PathVariable Long selectedGameId) {
+        databaseService.updateCompletedForGame(selectedGameId);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/games/star/{selectedGameId}")
+    public void updateStarredByGame(@PathVariable Long selectedGameId) {
+        databaseService.updateStarredForGame(selectedGameId);
     }
 
     @ResponseBody
     @DeleteMapping(value = "/games/{selectedGameId}")
     public void deletePost(@PathVariable Long selectedGameId) {
         selectedGameRepository.deleteById(selectedGameId);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/games/save")
+    public void saveEventToDatabase(@RequestBody Map<String, String> game) {
+        databaseService.saveNewGameToDatabase(game);
     }
 
 
