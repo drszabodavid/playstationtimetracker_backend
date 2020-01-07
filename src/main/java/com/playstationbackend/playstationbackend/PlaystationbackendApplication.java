@@ -12,10 +12,6 @@ public class PlaystationbackendApplication {
 
     public static void main(String[] args) {
 
-        Scrape scrape = new Scrape();
-        scrape.doScrape();
-
-
         SpringApplication.run(PlaystationbackendApplication.class, args);
 
     }
