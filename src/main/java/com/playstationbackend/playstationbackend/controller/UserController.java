@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -19,9 +18,6 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private UserDatabaseService userDatabaseService;
 
     @ResponseBody
     @RequestMapping(value = "/{userId}", produces = "application/json")
@@ -34,7 +30,4 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
-
-
 }

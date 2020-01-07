@@ -53,7 +53,6 @@ public class ValidationController {
         try {
             String name = userToLogin.get("name");
             String password = userToLogin.get("password");
-            // authenticationManager.authenticate calls loadUserByUsername in CustomUserDetailsService
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(name,password));
             List<String> roles = authentication.getAuthorities()
                     .stream()
@@ -80,12 +79,5 @@ public class ValidationController {
     @PostMapping("/registration")
     public void registration(@RequestBody Map<String, String> userToRegister) {
         userDatabaseService.registerUser(userToRegister);
-
     }
-
-
-
-
-
-
 }

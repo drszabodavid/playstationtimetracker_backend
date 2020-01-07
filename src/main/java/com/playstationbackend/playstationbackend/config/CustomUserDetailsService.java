@@ -20,9 +20,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.users = users;
     }
 
-    /**
-     * Loads the user from the DB and converts it to Spring Security's internal User object
-     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.playstationbackend.playstationbackend.entity.User user = users.findByName(username)

@@ -40,7 +40,7 @@ public class GameDatabaseService {
         for (SelectedGame selectedGame : allgames) {
             Optional<Game> game = gameRepository.findById(selectedGame.getGameId());
 
-            ComplexGame complexGame = new ComplexGame().builder()
+            ComplexGame complexGame = ComplexGame.builder()
                     .id(selectedGame.getId())
                     .gameId(selectedGame.getGameId())
                     .name(game.get().getName())
@@ -66,7 +66,7 @@ public class GameDatabaseService {
     }
 
     private void gameBuilder(Map<String, String> game) {
-        Game gameToSave = new Game().builder()
+        Game gameToSave = Game.builder()
                 .imageUrl(game.get("imageUrl"))
                 .name(game.get("name"))
                 .gameplayCompletionist(Double.parseDouble(game.get("gameplayCompletionist")))
@@ -77,7 +77,7 @@ public class GameDatabaseService {
     }
 
     private void selectedGameBuilder(User user, Map<String, String> game) {
-        SelectedGame selectedGame = new SelectedGame().builder()
+        SelectedGame selectedGame = SelectedGame.builder()
                 .user(user)
                 .liked(false)
                 .completed(false)
