@@ -1,12 +1,13 @@
-## Check out the deployed application on Heroku
-https://playstationtimetracker.herokuapp.com/
 
 # PlayStation Time Tracker
 A web application to track how much time you spent on gaming.
 
+## Check out the deployed application on Heroku
+https://playstationtimetracker.herokuapp.com/
+
 ## What is this
 This is a demo project I made to get familiar with React, frontend development and the usage of APIs.
-The purpose of the app is to track your gaming process by registering how many hours you spend on gaming and save this data  into your database. Also, the remaining time to finish a game is also calculated accordingly.
+The purpose of the app is to track your gaming process by registering how many hours you spend on gaming and save this data  into your database. Also, the remaining time to finish a game is also calculated accordingly. \
 For the backend I used:
   - Java
   - Spring Boot
