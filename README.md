@@ -16,7 +16,7 @@ For the backend I used:
   - Lombok
   - JSON Web Token
 
-Currently playtime is also modified so it counts hours instead of millisecond for testing purposes.
+Currently playtime is modified so it counts hours instead of millisecond for testing purposes.
 
 This repo contains the backend part of the application. 
 The frontend can be found here : https://github.com/drszabodavid/playstationtimetracker
