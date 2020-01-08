@@ -1,6 +1,6 @@
 
 # PlayStation Time Tracker
-A web application to track how much time you spent on gaming.
+A web application to track how much time you spend on gaming.
 
 ## Check out the deployed application on Heroku
 https://playstationtimetracker.herokuapp.com/
