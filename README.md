@@ -47,4 +47,4 @@ If the timer is started it counts the gaming time and if paused, the interval ge
 
 ## Future plans
 
-Currently I'm working on styling. I would like to make the app equally responsive for different screen sizes.
+I would like to make the app equally responsive for different screen sizes and I'd also like to implement the possibility to import the users game list during registration using the username and scrape the data from psnprofiles.com.
