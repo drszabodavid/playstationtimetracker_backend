@@ -15,7 +15,7 @@ import java.util.Map;
 @Controller
 @Slf4j
 @CrossOrigin
-@RequestMapping
+@RequestMapping(path = "/games")
 public class GameController {
 
     @Autowired
@@ -25,37 +25,37 @@ public class GameController {
     GameDatabaseService gameDatabaseService;
 
     @ResponseBody
-    @GetMapping(value = "/{userId}/games", produces = "application/json")
-    public List<ComplexGame> getEventByCity(@PathVariable("userId") Long userId) {
+    @GetMapping(value = "/{userId}", produces = "application/json")
+    public List<ComplexGame> getGamesByUserId(@PathVariable("userId") Long userId) {
         return gameDatabaseService.getAllGamesForaUser(userId);
     }
 
     @ResponseBody
-    @PostMapping(value = "/games/update")
+    @PostMapping(value = "/update")
     public void updatePlayTimeByGame(@RequestBody Map<String, String> gameToUpdate) {
         gameDatabaseService.updateTimeForGame(gameToUpdate);
     }
 
     @ResponseBody
-    @PostMapping(value = "/games/complete/{selectedGameId}")
+    @PostMapping(value = "/complete/{selectedGameId}")
     public void updateCompletionByGame(@PathVariable Long selectedGameId) {
         gameDatabaseService.updateCompletedForGame(selectedGameId);
     }
 
     @ResponseBody
-    @PostMapping(value = "/games/star/{selectedGameId}")
+    @PostMapping(value = "/star/{selectedGameId}")
     public void updateStarredByGame(@PathVariable Long selectedGameId) {
         gameDatabaseService.updateStarredForGame(selectedGameId);
     }
 
     @ResponseBody
-    @PostMapping(value = "/games/{selectedGameId}")
+    @PostMapping(value = "/{selectedGameId}")
     public void deletePost(@PathVariable Long selectedGameId) {
         selectedGameRepository.deleteById(selectedGameId);
     }
 
     @ResponseBody
-    @PostMapping(value = "/games/save")
+    @PostMapping(value = "/save")
     public void saveEventToDatabase(@RequestBody Map<String, String> game) {
         gameDatabaseService.saveNewGameToDatabase(game);
     }
